@@ -9,6 +9,13 @@ static const char *JPG_CONTENT_TYPE = "image/jpeg";
 
 AsyncWebServer server(80);
 
+#define THUMB_PIN 0;
+#define INDEX_PIN 1;
+#define MIDDLE_PIN 2;
+#define RING_PIN 3;
+#define PINKY_PIN 4;
+
+
 void setupServer()
 {
     // ------------------ File System ------------------
@@ -24,27 +31,23 @@ void setupServer()
 
     // ------------------ Page Stream ------------------
 
-    // server.on("/direction-stream", HTTP_GET, [](AsyncWebServerRequest *request)
-    //           { 
-    //             if (request->hasParam("right") && request->hasParam("left"))
-    //             {
-    //                 int right = request->getParam("right")->value().toInt();
-    //                 int left = request->getParam("left")->value().toInt();
-                    
-    //                 bool leftDirection = left > 0 ? 1 : 0;
-    //                 bool rightDirection = right > 0 ? 1 : 0;
+    server.on("/set-pos", HTTP_GET, [](AsyncWebServerRequest *request)
+              { 
+                if (request->hasParam("0") && 
+                    request->hasParam("1") &&
+                    request->hasParam("2") && 
+                    request->hasParam("3") && 
+                    request->hasParam("4"))
+                {
+                    // digitalWrite(LEFT_MOTOR_IN1, leftDirection);
+                    // digitalWrite(LEFT_MOTOR_IN2, !leftDirection);
+                    // ledcWrite(LEFT_PWM_CHANNEL, abs(left));
 
-    //                 digitalWrite(LEFT_MOTOR_IN1, leftDirection);
-    //                 digitalWrite(LEFT_MOTOR_IN2, !leftDirection);
-    //                 ledcWrite(LEFT_PWM_CHANNEL, abs(left));
-
-    //                 digitalWrite(RIGHT_MOTOR_IN1, rightDirection);
-    //                 digitalWrite(RIGHT_MOTOR_IN2, !rightDirection);
-    //                 ledcWrite(RIGHT_PWM_CHANNEL, abs(right));
-
-    //                 Serial.println("Left: " + String(left) + " Right: " + String(right));
-    //             }
-    //             request->send(200); });
+                    // digitalWrite(RIGHT_MOTOR_IN1, rightDirection);
+                    // digitalWrite(RIGHT_MOTOR_IN2, !rightDirection);
+                    // ledcWrite(RIGHT_PWM_CHANNEL, abs(right));
+                }
+                request->send(200); });
 
     // ------------------ Server Start ------------------
 

@@ -7,13 +7,3 @@ body {
     overflow: hidden;
     -webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;
 }
-#camera-stream {
-    position: absolute;
-    top: 50%;left: 50%;
-    transform: translate(0%, -50%);
-    width: 48%;
-}
-#direction-viewboard {
-    position: absolute;
-    top: 7%;left: 7%;
-}
