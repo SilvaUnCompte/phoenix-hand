@@ -1,12 +1,6 @@
 #include <Arduino.h>
 #include "server.h"
 
-#define PART_BOUNDARY "123456789000000000000987654321"
-static const char *STREAM_CONTENT_TYPE = "multipart/x-mixed-replace;boundary=" PART_BOUNDARY;
-static const char *STREAM_BOUNDARY = "\r\n--" PART_BOUNDARY "\r\n";
-static const char *STREAM_PART = "Content-Type: %s\r\nContent-Length: %u\r\n\r\n";
-static const char *JPG_CONTENT_TYPE = "image/jpeg";
-
 AsyncWebServer server(80);
 
 void setupServer()
