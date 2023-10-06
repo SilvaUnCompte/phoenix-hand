@@ -1,8 +1,9 @@
 let input_entry = document.getElementById("entry");
 let dico = {
-    "a": [0, 1, 0, 0, 0], // les 0 sont les doigts qui sont levés
+    "a": [0, 1, 0, 0, 0], // les 1 sont les doigts qui sont levés
     "b": [0, 1, 0, 0, 1], // ici ce sont des fausses valeurs, il faut les remplacer par les bonnes
     "c": [0, 1, 0, 1, 0],
+    "-": [1, 1, 1, 1, 1],
 };
 let buffer = [];
 
