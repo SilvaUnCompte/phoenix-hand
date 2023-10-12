@@ -19,6 +19,21 @@ void setupServer()
     server.on("/base", HTTP_GET, [](AsyncWebServerRequest *request)
               { request->send(SPIFFS, "/base.png", "image/png"); });
 
+    server.on("/index", HTTP_GET, [](AsyncWebServerRequest *request)
+              { request->send(SPIFFS, "/index.png", "image/png"); });
+
+    server.on("/middle", HTTP_GET, [](AsyncWebServerRequest *request)
+              { request->send(SPIFFS, "/middle.png", "image/png"); });
+
+    server.on("/pinky", HTTP_GET, [](AsyncWebServerRequest *request)
+              { request->send(SPIFFS, "/pinky.png", "image/png"); });
+
+    server.on("/ring", HTTP_GET, [](AsyncWebServerRequest *request)
+              { request->send(SPIFFS, "/ring.png", "image/png"); });
+
+    server.on("/thumb", HTTP_GET, [](AsyncWebServerRequest *request)
+              { request->send(SPIFFS, "/thumb.png", "image/png"); });
+
     // ------------------ Page Stream ------------------
 
     server.on("/set-pos", HTTP_GET, [](AsyncWebServerRequest *request)
@@ -37,7 +52,7 @@ void setupServer()
                     
                     // digitalWrite(LEFT_MOTOR_IN1, leftDirection);
                     // digitalWrite(LEFT_MOTOR_IN2, !leftDirection);
-                    // ledcWrite(LEFT_PWM_CHANNEL, abs(left));
+                    // ledcWrite(THUMB_PIN, 1);
 
                     // digitalWrite(RIGHT_MOTOR_IN1, rightDirection);
                     // digitalWrite(RIGHT_MOTOR_IN2, !rightDirection);
