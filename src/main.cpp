@@ -52,19 +52,22 @@ void setup()
 
   // --------------- Pin engine ---------------
 
-  // pinMode(LEFT_MOTOR_IN1, OUTPUT);
-  // pinMode(LEFT_MOTOR_IN2, OUTPUT);
-  // pinMode(LEFT_MOTOR_EN, OUTPUT);
+  pinMode(THUMB_PIN, OUTPUT);
+  pinMode(INDEX_PIN, OUTPUT);
+  pinMode(MIDDLE_PIN, OUTPUT);
+  pinMode(RING_PIN, OUTPUT);
+  pinMode(PINKY_PIN, OUTPUT);
 
-  // ledcSetup(LEFT_PWM_CHANNEL, 30000, 8);
-  // ledcAttachPin(LEFT_MOTOR_EN, LEFT_PWM_CHANNEL);
-
-  // pinMode(RIGHT_MOTOR_IN1, OUTPUT);
-  // pinMode(RIGHT_MOTOR_IN2, OUTPUT);
-  // pinMode(RIGHT_MOTOR_EN, OUTPUT);
-
-  // ledcSetup(RIGHT_PWM_CHANNEL, 30000, 8);
-  // ledcAttachPin(RIGHT_MOTOR_EN, RIGHT_PWM_CHANNEL);
+  // ledcSetup(THUMB_PWM_CHANNEL, 30000, 8);
+  // ledcAttachPin(THUMB_PIN, THUMB_PWM_CHANNEL);
+  // ledcSetup(INDEX_PWM_CHANNEL, 30000, 8);
+  // ledcAttachPin(INDEX_PIN, INDEX_PWM_CHANNEL);
+  // ledcSetup(MIDDLE_PWM_CHANNEL, 30000, 8);
+  // ledcAttachPin(MIDDLE_PIN, MIDDLE_PWM_CHANNEL);
+  // ledcSetup(RING_PWM_CHANNEL, 30000, 8);
+  // ledcAttachPin(RING_PIN, RING_PWM_CHANNEL);
+  // ledcSetup(PINKY_PWM_CHANNEL, 30000, 8);
+  // ledcAttachPin(PINKY_PIN, PINKY_PWM_CHANNEL);
 
   Serial.println("Setup done!");
 }

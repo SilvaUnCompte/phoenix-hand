@@ -16,6 +16,9 @@ void setupServer()
     server.on("/script.js", HTTP_GET, [](AsyncWebServerRequest *request)
               { request->send(SPIFFS, "/script.js", "text/javascript"); });
 
+    server.on("/base", HTTP_GET, [](AsyncWebServerRequest *request)
+              { request->send(SPIFFS, "/base.png", "image/png"); });
+
     // ------------------ Page Stream ------------------
 
     server.on("/set-pos", HTTP_GET, [](AsyncWebServerRequest *request)
@@ -26,6 +29,12 @@ void setupServer()
                     request->hasParam("3") && 
                     request->hasParam("4"))
                 {
+                    int thumb = request->getParam("0")->value().toInt();
+                    int index = request->getParam("1")->value().toInt();
+                    int middle = request->getParam("2")->value().toInt();
+                    int ring = request->getParam("3")->value().toInt();
+                    int pinky = request->getParam("4")->value().toInt();
+                    
                     // digitalWrite(LEFT_MOTOR_IN1, leftDirection);
                     // digitalWrite(LEFT_MOTOR_IN2, !leftDirection);
                     // ledcWrite(LEFT_PWM_CHANNEL, abs(left));
