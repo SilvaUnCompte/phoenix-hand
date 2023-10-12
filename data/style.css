@@ -13,10 +13,10 @@ h1 {
 
 #form {
   max-width: 400px;
-  margin-right: auto;
+  /* margin-right: auto; */
   margin-left: auto;
-  height: 100vh;
-  padding: 20px;
+  /* height: 100vh; */
+  padding: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -62,3 +62,44 @@ body {
     color: green;
   }
 }
+
+@media screen and (min-width:540px) { 
+    .mobile-image {display: block;} 
+} 
+
+
+
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+
+#image-container {
+    position: relative;
+    width: 700px;
+    height: 300px;
+}
+
+#handBG {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#pinky {
+    position: absolute;
+}
+
+.overlayHandImages {
+    position: absolute;
+}
+
+#image-container{
+  flex-direction: space-between;
+  justify-content: center;
+}
+
+
+

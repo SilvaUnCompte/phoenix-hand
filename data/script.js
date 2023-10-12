@@ -46,6 +46,10 @@ function send_message() {
     }
 }
 
+function send_finger(){
+    
+}
+
 function execute_buffer() {
     console.log(buffer);
 
@@ -70,3 +74,43 @@ function execute_buffer() {
 function init() {
     execute_buffer();
 }
+
+
+
+const handBG = document.getElementById('handBG');
+        const pinky = document.getElementById('pinky');
+        const ring = document.getElementById('ring');
+        const middle = document.getElementById('middle');
+        const index = document.getElementById('index');
+        const thumb = document.getElementById('thumb');
+
+        const activeDoigt = new Set(); 
+
+        document.addEventListener('click', function(event) {
+            const clickX = event.clientX - handBG.getBoundingClientRect().left;
+            const imageWidth = handBG.width;
+
+            let showFinger = null;
+
+            if (clickX <= imageWidth / 5) {
+                showFinger = pinky;
+            } else if (clickX <= (imageWidth * 2) / 5) {
+                showFinger = ring;
+            } else if (clickX <= (imageWidth * 3) / 5) {
+                showFinger = middle;
+            } else if (clickX <= (imageWidth * 4) / 5) {
+                showFinger = index;
+            } else {
+                showFinger = thumb;
+            }
+
+            if (showFinger) {
+                if (activeDoigt.has(showFinger)) {
+                    activeDoigt.delete(showFinger);
+                    showFinger.style.display = 'none';
+                } else {
+                    activeDoigt.add(showFinger);
+                    showFinger.style.display = 'block';
+                }
+            }
+        });
