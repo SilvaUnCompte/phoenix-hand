@@ -29,6 +29,7 @@ let dico = {
     "-": [1, 1, 1, 1, 1],
 };
 let buffer = [];
+const activeFinger = [1, 1, 1, 1, 1];
 
 function send_message() {
     let message = input_entry.value
@@ -44,10 +45,8 @@ function send_message() {
             buffer.push(dico[letter]);
         }
     }
-}
 
-function send_finger(){
-    
+    input_entry.value = "";
 }
 
 function execute_buffer() {
@@ -66,51 +65,65 @@ function execute_buffer() {
             true
         );
         xhttp.send();
+
+        activeFinger[0] = hand_pos[0];
+        activeFinger[1] = hand_pos[1];
+        activeFinger[2] = hand_pos[2];
+        activeFinger[3] = hand_pos[3];
+        activeFinger[4] = hand_pos[4];
     }
 
-    buf_timout = setTimeout(execute_buffer, 700);
+    update_image();
+    buf_timout = setTimeout(execute_buffer, 500);
+}
+
+function update_image() {
+    activeFinger[0] ? thumb.style.display = 'block' : thumb.style.display = 'none';
+    activeFinger[1] ? index.style.display = 'block' : index.style.display = 'none';
+    activeFinger[2] ? middle.style.display = 'block' : middle.style.display = 'none';
+    activeFinger[3] ? ring.style.display = 'block' : ring.style.display = 'none';
+    activeFinger[4] ? pinky.style.display = 'block' : pinky.style.display = 'none';
 }
 
 function init() {
     execute_buffer();
 }
 
-
+// Hand image click
 
 const handBG = document.getElementById('handBG');
-        const pinky = document.getElementById('pinky');
-        const ring = document.getElementById('ring');
-        const middle = document.getElementById('middle');
-        const index = document.getElementById('index');
-        const thumb = document.getElementById('thumb');
+const pinky = document.getElementById('pinky');
+const ring = document.getElementById('ring');
+const middle = document.getElementById('middle');
+const index = document.getElementById('index');
+const thumb = document.getElementById('thumb');
 
-        const activeDoigt = new Set(); 
+document.addEventListener('click', function (event) {
+    const clickX = event.clientX - handBG.getBoundingClientRect().left;
+    const imageWidth = handBG.width;
 
-        document.addEventListener('click', function(event) {
-            const clickX = event.clientX - handBG.getBoundingClientRect().left;
-            const imageWidth = handBG.width;
+    if (clickX <= imageWidth / 2.5 && clickX >= imageWidth / 3) {
+        activeFinger[4] = !activeFinger[4];
+    } else if (clickX <= imageWidth / 2.1 && clickX >= imageWidth / 2.5) {
+        activeFinger[3] = !activeFinger[3];
+    } else if (clickX <= imageWidth / 1.8 && clickX >= imageWidth / 2.1) {
+        activeFinger[2] = !activeFinger[2];
+    } else if (clickX <= imageWidth / 1.6 && clickX >= imageWidth / 1.8) {
+        activeFinger[1] = !activeFinger[1];
+    } else if (clickX <= imageWidth / 1.3 && clickX >= imageWidth / 1.6) {
+        activeFinger[0] = !activeFinger[0];
+    }
 
-            let showFinger = null;
-
-            if (clickX <= imageWidth / 5) {
-                showFinger = pinky;
-            } else if (clickX <= (imageWidth * 2) / 5) {
-                showFinger = ring;
-            } else if (clickX <= (imageWidth * 3) / 5) {
-                showFinger = middle;
-            } else if (clickX <= (imageWidth * 4) / 5) {
-                showFinger = index;
-            } else {
-                showFinger = thumb;
-            }
-
-            if (showFinger) {
-                if (activeDoigt.has(showFinger)) {
-                    activeDoigt.delete(showFinger);
-                    showFinger.style.display = 'none';
-                } else {
-                    activeDoigt.add(showFinger);
-                    showFinger.style.display = 'block';
-                }
-            }
-        });
+    let xhttp = new XMLHttpRequest();
+        xhttp.open(
+            "GET", "/set-pos?0=" + activeFinger[0] +
+            "&1=" + activeFinger[1] +
+            "&2=" + activeFinger[2] +
+            "&3=" + activeFinger[3] +
+            "&4=" + activeFinger[4],
+            true
+        );
+        xhttp.send();
+    
+    update_image();
+});
