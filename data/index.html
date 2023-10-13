@@ -1,33 +1,70 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Phoenix Hand</title>
     <link rel="icon" href="data:;base64,=" />
     <meta charset="utf-8" name="viewport" content="user-scalable=no" />
     <link rel="stylesheet" href="style.css" />
-</head>
+  </head>
 
-<body onload="init()">
-
+  <body onload="init()">
     <div id="image-container">
-        <img id="handBG" src="/base" class="mobile-image" style="width:600px;height:690px;">
-        <img id="pinky" hidden class="overlayHandImages" src="/pinky" style="width:600px;height:700px;">
-        <img id="ring" hidden class="overlayHandImages" src="/ring" style="width:600px;height:700px;">
-        <img id="middle" hidden class="overlayHandImages" src="/middle" style="width:600px;height:700px;">
-        <img id="index" hidden class="overlayHandImages" src="/index" style="width:600px;height:700px;">
-        <img id="thumb" hidden class="overlayHandImages" src="/thumb" style="width:600px;height:700px;">
+      <img
+        id="handBG"
+        src="./base.png"
+        class="mobile-image"
+        style="width: 600px; height: 690px"
+      />
+      <img
+        id="pinky"
+        hidden
+        class="overlayHandImages"
+        src="./pinky.png"
+        style="width: 600px; height: 700px"
+      />
+      <img
+        id="ring"
+        hidden
+        class="overlayHandImages"
+        src="./ring.png"
+        style="width: 600px; height: 700px"
+      />
+      <img
+        id="middle"
+        hidden
+        class="overlayHandImages"
+        src="./middle.png"
+        style="width: 600px; height: 700px"
+      />
+      <img
+        id="index"
+        hidden
+        class="overlayHandImages"
+        src="./index.png"
+        style="width: 600px; height: 700px"
+      />
+      <img
+        id="thumb"
+        hidden
+        class="overlayHandImages"
+        src="./thumb.png"
+        style="width: 600px; height: 700px"
+      />
     </div>
 
     <div id="form">
-        <div class="hodiv">
-            <button onclick="buffer.push([1, 1, 1, 1, 1]);">Ouvrir</button>
-            <button onclick="buffer.push([0, 0, 0, 0, 0]);">Fermer</button>
-        </div>
-        <input type="text" name="entry" id="entry" placeholder="Entrez un text..." />
-        <button onclick="send_message()">Send</button>
+      <div class="hodiv">
+        <button onclick="buffer.push([1, 1, 1, 1, 1]);">Ouvrir</button>
+        <button onclick="buffer.push([0, 0, 0, 0, 0]);">Fermer</button>
+      </div>
+      <input
+        type="text"
+        name="entry"
+        id="entry"
+        placeholder="Entrez un text..."
+      />
+      <button onclick="send_message()">Send</button>
     </div>
-</body>
-<script type="text/javascript" src="script.js"></script>
-
+  </body>
+  <script type="text/javascript" src="script.js"></script>
 </html>

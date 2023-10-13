@@ -71,3 +71,16 @@ body {
   flex-direction: space-between;
   justify-content: center;
 }
+
+@media screen and (max-width: 850px) {
+  body {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  #form {
+    max-width: none;
+    margin-left: 0;
+    width: 78vw;
+  }
+}
