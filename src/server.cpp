@@ -2,9 +2,20 @@
 #include "server.h"
 
 AsyncWebServer server(80);
+Servo thumb_s;
+Servo index_s;
+Servo middle_s;
+Servo ring_s;
+Servo pinky_s;
 
 void setupServer()
 {
+    thumb_s.attach(THUMB_PIN);
+    index_s.attach(INDEX_PIN);
+    middle_s.attach(MIDDLE_PIN);
+    ring_s.attach(RING_PIN);
+    pinky_s.attach(PINKY_PIN);
+
     // ------------------ File System ------------------
 
     server.on("/", HTTP_GET, [](AsyncWebServerRequest *request)
@@ -50,13 +61,11 @@ void setupServer()
                     int ring = request->getParam("3")->value().toInt();
                     int pinky = request->getParam("4")->value().toInt();
                     
-                    // digitalWrite(LEFT_MOTOR_IN1, leftDirection);
-                    // digitalWrite(LEFT_MOTOR_IN2, !leftDirection);
-                    // ledcWrite(THUMB_PIN, 1);
-
-                    // digitalWrite(RIGHT_MOTOR_IN1, rightDirection);
-                    // digitalWrite(RIGHT_MOTOR_IN2, !rightDirection);
-                    // ledcWrite(RIGHT_PWM_CHANNEL, abs(right));
+                    thumb_s.write(thumb*170);
+                    index_s.write(index*170);
+                    middle_s.write(middle*170);
+                    ring_s.write(ring*170);
+                    pinky_s.write(pinky*170);
                 }
                 request->send(200); });
 

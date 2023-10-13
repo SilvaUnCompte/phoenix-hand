@@ -103,15 +103,15 @@ document.addEventListener('click', function (event) {
     const imageWidth = handBG.width;
 
     if (clickX <= imageWidth / 2.5 && clickX >= imageWidth / 3) {
-        activeFinger[4] = !activeFinger[4];
+        activeFinger[4] = (activeFinger[4]+1) %2;
     } else if (clickX <= imageWidth / 2.1 && clickX >= imageWidth / 2.5) {
-        activeFinger[3] = !activeFinger[3];
+        activeFinger[3] = (activeFinger[3]+1) %2;
     } else if (clickX <= imageWidth / 1.8 && clickX >= imageWidth / 2.1) {
-        activeFinger[2] = !activeFinger[2];
+        activeFinger[2] = (activeFinger[2]+1) %2;
     } else if (clickX <= imageWidth / 1.6 && clickX >= imageWidth / 1.8) {
-        activeFinger[1] = !activeFinger[1];
+        activeFinger[1] = (activeFinger[1]+1) %2;
     } else if (clickX <= imageWidth / 1.3 && clickX >= imageWidth / 1.6) {
-        activeFinger[0] = !activeFinger[0];
+        activeFinger[0] = (activeFinger[0]+1) %2;
     }
 
     let xhttp = new XMLHttpRequest();
